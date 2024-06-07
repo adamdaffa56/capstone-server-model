@@ -1,3 +1,5 @@
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 import pickle
 import tensorflow as tf
 from tensorflow import keras
@@ -41,4 +43,5 @@ def classify():
     return jsonify({"result": output_data[0].tolist()})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # app.run(host='0.0.0.0', port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
